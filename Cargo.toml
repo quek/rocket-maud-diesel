@@ -1,0 +1,10 @@
+[package]
+name = "rocket-maud"
+version = "0.1.0"
+authors = ["TAHARA Yoshinori <read.eval.print@gmail.com>"]
+
+[dependencies]
+rocket = "0.2.8"
+rocket_codegen = "0.2.8"
+maud = { version = "0.16", features = ["rocket"] }
+maud_macros = "0.16"
