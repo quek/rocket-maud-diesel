@@ -1,6 +1,12 @@
 # 開発環境
 
-TODO rustup nightly
+## Rust
+
+```
+rustup override set nightly
+```
+
+## Diesel
 
 ```
 cargo install diesel_cli

@@ -7,13 +7,19 @@ extern crate maud;
 #[macro_use]
 extern crate diesel;
 extern crate dotenv;
+extern crate r2d2;
+extern crate r2d2_diesel;
 
+use db_pool::DbPool;
 use maud::Markup;
 
-pub mod try_diesel;
+pub mod db_pool;
 
 #[get("/<name>")]
-fn hello(name: &str) -> Markup {
+fn hello(name: &str, db_pool: rocket::State<DbPool>) -> Markup {
+    let connection = db_pool.get();
+    assert!(connection.is_ok());
+
     html! {
         h1 { "Hello, " (name) "!" }
         p "Nice to meet you!"
@@ -21,6 +27,5 @@ fn hello(name: &str) -> Markup {
 }
 
 fn main() {
-    try_diesel::establish_connection();
-    rocket::ignite().mount("/", routes![hello]).launch();
+    rocket::ignite().manage(db_pool::create_db_pool()).mount("/", routes![hello]).launch();
 }
