@@ -34,3 +34,7 @@ http://qiita.com/mwatanabe@github/items/7e9a40d31bc27ab9d901
 ```
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';
 ```
+
+```
+echo 'DATABASE_URL=mysql://root:@localhost:3306/rust' > .env
+```

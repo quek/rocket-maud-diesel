@@ -12,14 +12,15 @@ pub fn index(connection: db::Conn) -> Markup {
         .limit(5)
         .load::<Post>(&*connection)
         .expect("Error loading posts");
-    for post in results {
-        println!("{}", post.title);
-        println!("-----------\n");
-        println!("{}", post.body);
-    }
 
     html! {
-        h1 { "Posts" }
-        p "一覧表示"
+        h1 { "Post 一覧表示" }
+        ol {
+            @for post in results {
+                li {
+                    (post.title) " " (post.body)
+                }
+            }
+        }
     }
 }
