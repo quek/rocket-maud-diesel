@@ -1,5 +1,5 @@
 [root]
-name = "rocket-maud"
+name = "rocket-maud-diesel"
 version = "0.1.0"
 dependencies = [
  "diesel 0.13.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -59,8 +59,7 @@ version = "0.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "byteorder 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "mysqlclient-sys 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)",
- "url 1.5.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "pq-sys 0.4.3 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -194,14 +193,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "mysqlclient-sys"
-version = "0.2.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-dependencies = [
- "pkg-config 0.3.9 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
 name = "num_cpus"
 version = "1.6.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -215,8 +206,8 @@ version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
-name = "pkg-config"
-version = "0.3.9"
+name = "pq-sys"
+version = "0.4.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
@@ -480,10 +471,9 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum maud_macros 0.16.3 (registry+https://github.com/rust-lang/crates.io-index)" = "853424d2ad8f2077793652dde719047c6273e7a344a5cd5e132e5550555c8a39"
 "checksum memchr 1.0.1 (registry+https://github.com/rust-lang/crates.io-index)" = "1dbccc0e46f1ea47b9f17e6d67c5a96bd27030519c519c9c91327e31275a47b4"
 "checksum mime 0.2.6 (registry+https://github.com/rust-lang/crates.io-index)" = "ba626b8a6de5da682e1caa06bdb42a335aee5a84db8e5046a3e8ab17ba0a3ae0"
-"checksum mysqlclient-sys 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)" = "8327afd4c4d233cace4de9ff476a5e368e5eb5cd0f67d2e79cd5c63538b72b08"
 "checksum num_cpus 1.6.2 (registry+https://github.com/rust-lang/crates.io-index)" = "aec53c34f2d0247c5ca5d32cca1478762f301740468ee9ee6dcb7a0dd7a0c584"
 "checksum percent-encoding 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)" = "de154f638187706bde41d9b4738748933d64e6b37bdbffc0b47a97d16a6ae356"
-"checksum pkg-config 0.3.9 (registry+https://github.com/rust-lang/crates.io-index)" = "3a8b4c6b8165cd1a1cd4b9b120978131389f64bdaf456435caa41e630edba903"
+"checksum pq-sys 0.4.3 (registry+https://github.com/rust-lang/crates.io-index)" = "6f386bd842d8571f4df788f49e764bab85d30b3320b2ca98a2a24cfa8f65b903"
 "checksum quote 0.3.15 (registry+https://github.com/rust-lang/crates.io-index)" = "7a6e920b65c65f10b2ae65c831a81a073a89edd28c7cce89475bff467ab4167a"
 "checksum r2d2 0.7.2 (registry+https://github.com/rust-lang/crates.io-index)" = "1dd448c29d0ed83cfe187ffb8608fa07c47abdd7997f3f478f3a6223ad3f97fb"
 "checksum r2d2-diesel 0.13.0 (registry+https://github.com/rust-lang/crates.io-index)" = "1bbf44e6b988bcd783c4233eb9fd562a4412431b5b56deab063b84c4c18ad6c5"
