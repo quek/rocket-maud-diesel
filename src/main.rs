@@ -18,6 +18,7 @@ pub mod schema;
 pub mod models;
 pub mod db;
 pub mod post_controller;
+mod layouts;
 
 #[get("/")]
 fn hello() -> Markup {

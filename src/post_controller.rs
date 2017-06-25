@@ -3,6 +3,7 @@ use diesel::prelude::*;
 use maud::Markup;
 use models::Post;
 use db;
+use layouts;
 
 #[get("/posts")]
 pub fn index(connection: db::Conn) -> Markup {
@@ -13,7 +14,8 @@ pub fn index(connection: db::Conn) -> Markup {
         .load::<Post>(&*connection)
         .expect("Error loading posts");
 
-    html! {
+    layouts::default("ポスト一覧",
+                     html! {
         h1 { "Post 一覧表示" }
         ol {
             @for post in results {
@@ -22,5 +24,5 @@ pub fn index(connection: db::Conn) -> Markup {
                 }
             }
         }
-    }
+    })
 }
