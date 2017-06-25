@@ -4,8 +4,13 @@
 
 extern crate rocket;
 extern crate maud;
+#[macro_use]
+extern crate diesel;
+extern crate dotenv;
 
 use maud::Markup;
+
+pub mod try_diesel;
 
 #[get("/<name>")]
 fn hello(name: &str) -> Markup {
@@ -16,5 +21,6 @@ fn hello(name: &str) -> Markup {
 }
 
 fn main() {
+    try_diesel::establish_connection();
     rocket::ignite().mount("/", routes![hello]).launch();
 }
