@@ -32,6 +32,7 @@ fn main() {
     rocket::ignite()
         .manage(db::create_db_pool())
         .mount("/", routes![hello])
-        .mount("/", routes![post_controller::index])
+        .mount("/posts",
+               routes![post_controller::index, post_controller::new, post_controller::create])
         .launch();
 }
