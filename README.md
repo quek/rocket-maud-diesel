@@ -3,7 +3,7 @@
 ## Rust
 
 ```
-rustup override set nightly
+rustup install `cat rust-toolchain`
 ```
 
 ## Diesel
