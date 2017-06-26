@@ -25,7 +25,7 @@ pub fn index(connection: db::Conn) -> Markup {
                                  li {
                                      (post.title) " " (post.body)
                                      a href={ "/posts/" (post.id) } "編集"
-                               }
+                                 }
                              }
                          }
                      })
