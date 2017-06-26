@@ -1,8 +1,10 @@
 use rocket::response::Redirect;
+use rocket::request::Form;
+use diesel;
 use diesel::prelude::*;
 
 use maud::Markup;
-use models::Post;
+use models::{Post, NewPost};
 use db;
 use layouts;
 
@@ -42,13 +44,42 @@ pub fn new() -> Markup {
                 label "本文"
                 textarea name="body" {}
             }
+            p {
+                label {
+                    input type="radio" name="published" value="true"
+                    "公開"
+                }
+                label {
+                    input type="radio" name="published" value="false"
+                    "非公開"
+                }
+            }
             input type="submit" value="登録" /
         }
     };
     layouts::default("ポスト 新規登録", x)
 }
 
-#[post("/")]
-pub fn create(connection: db::Conn) -> Redirect {
+#[derive(FromForm)]
+pub struct PostForm {
+    title: String,
+    body: String,
+    published: bool,
+}
+
+#[post("/", data="<form>")]
+pub fn create(form: Form<PostForm>, connection: db::Conn) -> Redirect {
+    use schema::posts;
+
+    let new_post = NewPost {
+        title: &form.get().title,
+        body: &form.get().body,
+        published: form.get().published,
+    };
+    diesel::insert(&new_post)
+        .into(posts::table)
+        .execute(&*connection)
+        .expect("Error saving new post");
+
     Redirect::to("/posts")
 }
