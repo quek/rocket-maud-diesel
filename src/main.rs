@@ -33,6 +33,10 @@ fn main() {
         .manage(db::create_db_pool())
         .mount("/", routes![hello])
         .mount("/posts",
-               routes![post_controller::index, post_controller::new, post_controller::create])
+               routes![post_controller::index,
+                       post_controller::new,
+                       post_controller::create,
+                       post_controller::edit,
+                       post_controller::update])
         .launch();
 }
