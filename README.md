@@ -38,3 +38,20 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';
 ```
 echo 'DATABASE_URL=mysql://root:@localhost:3306/rust' > .env
 ```
+
+##  cargo watch
+
+ファイル変更でコンパイルと実行してくれるやつ
+https://github.com/passcod/cargo-watch
+
+インストール
+
+```
+cargo install cargo-watch
+````
+
+実行
+
+```
+cargo watch -x run
+```
