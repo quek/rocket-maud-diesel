@@ -13,6 +13,7 @@ extern crate r2d2;
 extern crate r2d2_diesel;
 
 use maud::Markup;
+use std::path::{Path, PathBuf};
 
 pub mod schema;
 pub mod models;
@@ -25,13 +26,20 @@ fn hello() -> Markup {
     html! {
         h1 { "Hello!" }
         p "Nice to meet you!"
+        script src="/assets/bundle.js" ""
     }
+}
+
+#[get("/<file..>")]
+fn assets(file: PathBuf) -> Option<rocket::response::NamedFile> {
+    rocket::response::NamedFile::open(Path::new("../front/dist/").join(file)).ok()
 }
 
 fn main() {
     rocket::ignite()
         .manage(db::create_db_pool())
         .mount("/", routes![hello])
+        .mount("/assets", routes![assets])
         .mount("/posts",
                routes![post_controller::index,
                        post_controller::new,
